@@ -1,0 +1,239 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,500;1,900&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  background: linear-gradient(135deg, #ffb8c6, #ffdde1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden; /* Important to hide hearts that float beyond the screen */
+}
+
+/* ============== Floating Hearts ============== */
+.hearts {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none; /* let clicks pass through the hearts */
+  overflow: hidden;
+}
+
+.heart {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background: red;
+  /* Create the heart shape by rotating a square and using two pseudo-elements for the bumps */
+  transform: rotate(-45deg);
+  animation: floatHearts 7s linear infinite;
+  bottom: -30px; /* start below the visible screen */
+}
+
+.heart::before,
+.heart::after {
+  content: "";
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background: red;
+  border-radius: 50%;
+}
+
+/* Move the circles into the correct positions for a heart shape */
+.heart::before {
+  top: -10px;
+  left: 0;
+}
+
+.heart::after {
+  left: 10px;
+  top: 0;
+}
+
+/* Heart animation: float upwards and rotate */
+@keyframes floatHearts {
+  0% {
+    transform: translateY(0) rotate(-45deg);
+    opacity: 1;
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-100vh) rotate(-45deg);
+    opacity: 0;
+  }
+}
+
+/* Assign random positions and animation durations to each heart */
+.heart:nth-child(1) {
+  left: 10%;
+  animation-duration: 8s;
+  animation-delay: 0s;
+}
+.heart:nth-child(2) {
+  left: 20%;
+  animation-duration: 6s;
+  animation-delay: 2s;
+}
+.heart:nth-child(3) {
+  left: 30%;
+  animation-duration: 9s;
+  animation-delay: 4s;
+}
+.heart:nth-child(4) {
+  left: 40%;
+  animation-duration: 7s;
+  animation-delay: 1s;
+}
+.heart:nth-child(5) {
+  left: 50%;
+  animation-duration: 8s;
+  animation-delay: 3s;
+}
+.heart:nth-child(6) {
+  left: 60%;
+  animation-duration: 6.5s;
+  animation-delay: 2.5s;
+}
+.heart:nth-child(7) {
+  left: 70%;
+  animation-duration: 7.5s;
+  animation-delay: 1.5s;
+}
+.heart:nth-child(8) {
+  left: 80%;
+  animation-duration: 9.5s;
+  animation-delay: 3.5s;
+}
+.heart:nth-child(9) {
+  left: 90%;
+  animation-duration: 6.5s;
+  animation-delay: 1s;
+}
+
+/* ============== GREETINGS TEXT ANIMATION ============== */
+.greetings {
+  font-size: 6rem;
+  font-weight: 900;
+  color: #fff;
+  text-shadow: 0 0 12px #ff6fcf, 0 0 40px #ff6fcf, 0 0 80px #ff6fcf;
+  margin-bottom: 20px;
+  z-index: 1; /* above hearts */
+}
+
+.greetings > span {
+  animation: glow 2.5s ease-in-out infinite;
+}
+
+@keyframes glow {
+  0%,
+  100% {
+    color: #fff;
+    text-shadow: 0 0 12px #ff6fcf, 0 0 40px #ff6fcf, 0 0 80px #ff6fcf;
+  }
+  10%,
+  90% {
+    color: #ffb8c6;
+    text-shadow: none;
+  }
+}
+
+.greetings > span:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.greetings > span:nth-child(3) {
+  animation-delay: 0.4s;
+}
+.greetings > span:nth-child(4) {
+  animation-delay: 0.6s;
+}
+.greetings > span:nth-child(5) {
+  animation-delay: 0.8s;
+}
+.greetings > span:nth-child(6) {
+    animation-delay: 1.0s;
+}
+.greetings > span:nth-child(7) {
+    animation-delay: 1.2s;
+}
+.greetings > span:nth-child(8) {
+    animation-delay: 1.4s;
+}
+.greetings > span:nth-child(9) {
+    animation-delay: 1.6s;
+}
+.greetings > span:nth-child(10) {
+    animation-delay: 1.8s;
+}
+.greetings > span:nth-child(11) {
+    animation-delay: 2.0s;
+}
+.greetings > span:nth-child(12) {
+    animation-delay: 2.2s;
+}
+.greetings > span:nth-child(13) {
+    animation-delay: 2.4s;
+}
+
+/* ============== DESCRIPTION ============== */
+.description {
+  font-size: 1.2rem;
+  color: #fff;
+  margin-bottom: 30px;
+  text-align: center;
+  z-index: 1; /* above hearts */
+  max-width: 600px;
+}
+
+/* ============== BUTTON ============== */
+.button {
+  z-index: 1; /* keep it above floating hearts */
+}
+
+.botones {
+  padding: 12px 20px;
+  border-radius: 30px;
+  background-color: #f06292;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.botones:hover {
+  background-color: #ff6fcf;
+}
+
+.botones a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+/* ============== RESPONSIVE ============== */
+@media screen and (max-width: 574px) {
+  .greetings {
+    font-size: 3rem;
+    text-align: center;
+  }
+  .description {
+    font-size: 1rem;
+    padding: 0 20px;
+  }
+  .botones {
+    padding: 10px 16px;
+  }
+}
